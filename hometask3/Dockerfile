@@ -1,12 +1,6 @@
-FROM ubuntu:18.04 as base
-MAINTAINER <hliantseva@gmail.com>
+FROM centos:latest
 
-
-RUN apt-get update && \
-  apt-get install -y apache2 && \
-  /etc/init.d/apache2 start
-  
-  
+LABEL maintainer="hliantseva@gmail.com"
 EXPOSE 8081
-ENTRYPOINT tail -f /dev/null
-
+RUN yum update
+CMD yum install -y apache; tail -f dev/null
